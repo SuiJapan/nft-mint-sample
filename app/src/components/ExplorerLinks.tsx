@@ -3,6 +3,11 @@ type ExplorerLinksProps = {
   objectId: string | null;
 };
 
+/**
+ * ExplorerLinks Component
+ * @param param0 
+ * @returns 
+ */
 const ExplorerLinks = ({ digest, objectId }: ExplorerLinksProps) => {
   return (
     <div className="explorer-links">

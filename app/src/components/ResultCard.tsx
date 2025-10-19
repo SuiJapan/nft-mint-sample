@@ -1,5 +1,10 @@
 import type { MintResult } from "../lib/types";
 
+/**
+ * ResultCard Componet
+ * @param param0 
+ * @returns 
+ */
 const ResultCard = ({ result }: { result: MintResult }) => {
   return (
     <div className="result-card">

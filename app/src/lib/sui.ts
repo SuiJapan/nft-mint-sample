@@ -14,12 +14,18 @@ function getEnv(name: string): string {
   return raw;
 }
 
+/**
+ * NFTミント用のトランザクションを作成するメソッド
+ * @param values ミントに必要な引数の情報
+ * @returns 
+ */
 export function buildMintTransaction(values: MintFormValues): Transaction {
   const packageId = getEnv("VITE_PACKAGE_ID");
   const moduleName = getEnv("VITE_MODULE");
   const functionName = getEnv("VITE_FN_MINT");
 
   const tx = new Transaction();
+  // NFTコントラクトのmint関数を呼び出すトランザクションデータを作成
   tx.moveCall({
     target: `${packageId}::${moduleName}::${functionName}`,
     arguments: [

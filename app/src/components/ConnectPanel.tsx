@@ -2,6 +2,10 @@ import { ConnectButton, useCurrentAccount, useCurrentWallet } from "@mysten/dapp
 
 import { defaultNetworkName } from "../lib/network";
 
+/**
+ * ConnectPanel Component
+ * @returns 
+ */
 const ConnectPanel = () => {
   const account = useCurrentAccount();
   const walletState = useCurrentWallet();

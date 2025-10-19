@@ -1,6 +1,6 @@
-import { FormEvent, useMemo, useState } from "react";
 import { useSignAndExecuteTransaction, useSuiClient } from "@mysten/dapp-kit";
 import type { SuiTransactionBlockResponse } from "@mysten/sui/client";
+import { FormEvent, useMemo, useState } from "react";
 
 import { buildMintTransaction } from "../lib/sui";
 import type { MintResult } from "../lib/types";
@@ -30,6 +30,11 @@ type MintFormProps = {
 
 type FormState = "idle" | "submitting";
 
+/**
+ * MintForm Component
+ * @param param0 
+ * @returns 
+ */
 const MintForm = ({ onComplete, account }: MintFormProps) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -74,6 +79,11 @@ const MintForm = ({ onComplete, account }: MintFormProps) => {
     return first?.reference?.objectId ?? null;
   };
 
+  /**
+   * Mint メソッドを押した時の処理
+   * @param event 
+   * @returns 
+   */
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
@@ -92,16 +102,19 @@ const MintForm = ({ onComplete, account }: MintFormProps) => {
     setState("submitting");
 
     try {
+      // トランザクションデータを作成
       const tx = buildMintTransaction({
         name: name.trim(),
         description: description.trim(),
         imageUrl
       });
 
+      // トランザクションに署名＆送信
       const { digest } = await signAndExecuteTransaction({
         transaction: tx
       });
 
+      // 実行結果を取得する
       const receipt = await client.waitForTransaction({
         digest,
         options: {

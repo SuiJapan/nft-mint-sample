@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useCurrentAccount } from "@mysten/dapp-kit";
+import { useState } from "react";
 
 import ConnectPanel from "./components/ConnectPanel";
 import ExplorerLinks from "./components/ExplorerLinks";
@@ -7,7 +7,12 @@ import MintForm from "./components/MintForm";
 import ResultCard from "./components/ResultCard";
 import type { MintResult } from "./lib/types";
 
+/**
+ * App Component
+ * @returns 
+ */
 function App() {
+  // 接続中のウォレットアカウント情報を取得する
   const account = useCurrentAccount();
   const [mintResult, setMintResult] = useState<MintResult | null>(null);
 
