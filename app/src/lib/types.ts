@@ -1,4 +1,4 @@
 export type MintResult = {
-  digest: string;
-  objectId: string | null;
+	digest: string;
+	objectId: string | null;
 };
